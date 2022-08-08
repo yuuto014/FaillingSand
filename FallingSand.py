@@ -55,26 +55,20 @@ def rules(M):
             '''
             x|x|x
             x|C|x
-            L|A|R            '''
-            
+            L|A|R            
+            '''           
             C= M[i][j]
             A= M[(i+1)%alto][j]
             L= M[(i+1)%alto][j-1]
             R= M[(i+1)%alto][(j+1)%ancho]
 
-            S = 0
-
             if i!=alto-1:
-                #temp[i][j]=M[i][j] 
                 if C==1:
-                    # print("M[",i,"][",j,"]")
-                    temp[i][j] = 0
-                    if A==0 : temp[(i+1)%alto][j] =1
-                    elif A==1 : 
-                        # caida = [L,R]
+                    if A==0 : temp[i][j]=0;temp[(i+1)%alto][j]=1
+                    else:
                         r = random.choice([L,R])
-                        if r==R and R==0: temp[(i+1)%alto][(j+1)%ancho] = 1
-                        if r==L and L==0: temp[(i+1)%alto][j-1] = 1
+                        if r==R and R==0:temp[i][j]=0; temp[(i+1)%alto][(j+1)%ancho] = 1
+                        elif r==L and L==0:temp[i][j]=0; temp[(i+1)%alto][j-1] = 1
                         else :temp[i][j] = 1
             elif i==alto-1: 
                 if C==1:
@@ -84,5 +78,11 @@ def rules(M):
 for i in range(250):
     graphic(i)
     M =rules(M)
-#Para unirlos se usa conv
 
+
+'''
+Para unirlos se usa convert para crear el archivo .gif 
+El programa esta hecho para ejecutarse en un entorno linux
+Es necesario el programa Imagemagick 
+'''
+os.system("convert -delay 5 *pbm animacion1.gif;rm *pbm")

@@ -49,8 +49,8 @@ def graphic(num):
 
 def rules(M):
     temp = [[0 for i in range(ancho)] for j in range(alto)]
-    for i in range(alto-1,-1,-1):
-        for j in range(ancho-1,-1,-1):
+    for i in range(alto):
+        for j in range(ancho):
             # print("M[",i,"][",j,"]")
             '''
             x|x|x
@@ -64,9 +64,8 @@ def rules(M):
 
             S = 0
 
-            if i==alto-1: temp[i][j]=M[i][j] #and j==ancho: pass
-            else:
-                temp[i][j]=M[i][j] 
+            if i!=alto-1:
+                #temp[i][j]=M[i][j] 
                 if C==1:
                     # print("M[",i,"][",j,"]")
                     temp[i][j] = 0
@@ -77,6 +76,9 @@ def rules(M):
                         if r==R and R==0: temp[(i+1)%alto][(j+1)%ancho] = 1
                         if r==L and L==0: temp[(i+1)%alto][j-1] = 1
                         else :temp[i][j] = 1
+            elif i==alto-1: 
+                if C==1:
+                    temp[i][j] = 1
     return temp
 
 for i in range(250):

@@ -71,8 +71,8 @@ def rules(M):
                     temp[i][j] = 0
                     if A==0 : temp[(i+1)%alto][j] =1
                     elif A==1 : 
-                        caida = [L,R]
-                        r = random.choice(caida)
+                        # caida = [L,R]
+                        r = random.choice([L,R])
                         if r==R and R==0: temp[(i+1)%alto][(j+1)%ancho] = 1
                         if r==L and L==0: temp[(i+1)%alto][j-1] = 1
                         else :temp[i][j] = 1

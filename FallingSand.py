@@ -109,6 +109,6 @@ Para unirlos se usa convert para crear el archivo .gif
 El programa esta hecho para ejecutarse en un entorno linux
 Es necesario el programa Imagemagick 
 '''
-os.system("convert -delay 200 dibujo_000.pbm animacion.jpg")
-os.system("convert -delay 5 *pbm animacion.gif;rm *pbm")
+# os.system("convert -delay 200 dibujo_000.pbm animacion.jpg")
+os.system("convert -delay 300 *pbm animacion.gif;rm *pbm")
 #os.system("convert -delay 20 *pbm animacion.gif")
